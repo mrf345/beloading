@@ -1,5 +1,5 @@
 # beloading 0.1 beta
-### a customize-able loading screen, based on [jQuery UI](https://jquery.com) and [Bootstrap](https://bootstrap.com)
+### a customize-able loading screen, based on [jQuery UI](https://jquery.com) and [Bootstrap](https://getbootstrap.com)
 
 ## [Live Demo][0416ca12]
 
