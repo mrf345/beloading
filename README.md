@@ -3,7 +3,7 @@
 
 ## [Live Demo][0416ca12]
 
-  [0416ca12]: https://audio-sequence.github.io/beloading "Live demo of beloading"
+  [0416ca12]: https://audio-sequence.github.io/beloading.html "Live demo of beloading"
 
 ![Demo GIF](https://audio-sequence.github.io/beloading.gif)
 
