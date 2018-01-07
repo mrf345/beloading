@@ -1,4 +1,4 @@
-# beloading 0.1 beta
+# beloading (Beta)
 ### a customize-able loading screen, based on [jQuery UI](https://jquery.com) and [Bootstrap](https://getbootstrap.com)
 
 ## [Live Demo][0416ca12]
@@ -14,7 +14,7 @@
   <script src='beloading.js' type='text/javascript'></script>
   <script type='text/javascript'>
     $(document).ready(function () {
-      var loader = beloading({
+      const loader = beloading({
         text: 'Loading, please wait ...'
       })
     });
@@ -41,7 +41,7 @@ options = {
 
 ## Useful functions:
 #### To use any of the following functions, you have to get an instance of the constructor, which we did in the Setup section :
-` var loader = beloading()` </br>
+` const loader = beloading()` </br>
 ` loader.following_functions()`
 
 ```javascript
