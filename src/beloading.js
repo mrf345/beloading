@@ -19,7 +19,7 @@ Today's lesson: CSS necessary evil.
 const beloading = function beload (options) {
   const checkType = function checkType (type, args) {
     // checking the type of each varible in the passed array
-    for (var a in args) {
+    for (let a in args) {
       if (typeof args[a] !== type) return false
     }
     return true
