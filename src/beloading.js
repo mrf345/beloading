@@ -16,7 +16,7 @@ Today's lesson: CSS necessary evil.
 
  */
 
-const beloading = function beload (options) {
+const beloading = function beload (options,callback=() => {}) {
   const checkType = function checkType (type, args) {
     // checking the type of each varible in the passed array
     for (let a in args) {
@@ -62,7 +62,10 @@ const beloading = function beload (options) {
     if (options.trail !== 'true' && options.trail !== 'false') throw new TypeError('beloading(options) trail requires "true" or "false"')
     this.loading()
     this.effectit()
-    if (options.trail === 'false') window.addEventListener('load', function () { this.stop() })
+    if (options.trail === 'false') window.addEventListener('load', function () {
+      this.stop()
+      callback()
+    })
   }
 
   this.loading = function loading () {
