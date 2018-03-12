@@ -16,11 +16,6 @@ Today's lesson: CSS necessary evil.
 
  */
 
-// To fix fast load bug
-isLoaded = false
-jQuery(document).ready(function ($) {
-  window.addEventListener('load', function () { isLoaded = true })
-})
 
 const beloading = function beload (options,callback=() => {}) {
   const checkType = function checkType (type, args) {
@@ -69,13 +64,12 @@ const beloading = function beload (options,callback=() => {}) {
     this.loading()
     this.effectit()
     if (options.trail === 'false') {
-      if (isLoaded) {
-        this.stop(),
-        callback()
-      } else window.addEventListener('load', function () {
+      function toCall () {
         this.stop()
         callback()
-      })
+      }
+      if (document.readyState === "complete") toCall()
+      else $(window).on('load', toCall)
     }
   }
 
