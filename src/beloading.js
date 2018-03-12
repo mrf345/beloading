@@ -16,6 +16,12 @@ Today's lesson: CSS necessary evil.
 
  */
 
+// To fix fast load bug
+isLoaded = false
+jQuery(document).ready(function ($) {
+  window.addEventListener('load', function () { isLoaded = true })
+})
+
 const beloading = function beload (options,callback=() => {}) {
   const checkType = function checkType (type, args) {
     // checking the type of each varible in the passed array
@@ -62,10 +68,15 @@ const beloading = function beload (options,callback=() => {}) {
     if (options.trail !== 'true' && options.trail !== 'false') throw new TypeError('beloading(options) trail requires "true" or "false"')
     this.loading()
     this.effectit()
-    if (options.trail === 'false') window.addEventListener('load', function () {
-      this.stop()
-      callback()
-    })
+    if (options.trail === 'false') {
+      if (isLoaded) {
+        this.stop(),
+        callback()
+      } else window.addEventListener('load', function () {
+        this.stop()
+        callback()
+      })
+    }
   }
 
   this.loading = function loading () {
