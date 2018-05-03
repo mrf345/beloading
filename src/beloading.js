@@ -1,25 +1,14 @@
 /* global $ */ // to avoid linter false alarm
-
 /*
-
-Script : beloading 0.1 beta
-Author : Mohamed Feddad
-Date : 2017/12/16
-Source : https://github.com/mrf345/beloading
-License: MPL 2.0
-Dependancies: Bootstrap ver. * > 3, jQuery UI
-Today's lesson: CSS necessary evil.
-
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-
  */
 
 
 const beloading = function beload (options,callback=() => {}) {
   const checkType = function checkType (type, args) {
-    // checking the type of each varible in the passed array
+    // checking the type of each variable in the passed array
     for (let a in args) {
       if (typeof args[a] !== type) return false
     }
@@ -28,19 +17,22 @@ const beloading = function beload (options,callback=() => {}) {
 
   // main class with all functions
   if (typeof options !== 'object') options = {} // assigning empty object if options is not passed
-  if (!window.jQuery) throw new Error('Thsi script is based on jQuery, go get it') // checking for jQuery
+  if (!window.jQuery) throw new Error('This script is based on jQuery, go get it') // checking for jQuery
   if (typeof $.ui === 'undefined') throw new Error('This script uses jQuery UI effects, go get it') // checking for jQuery UI
   options = {
     // options that will be passed and replacements in case not
     background: options.background || 'rgba(0, 0, 0, 0.9)', // background color
-    icon: options.icon || 'fa fa-refresh fa-spin', // takes font awsome icon
+    icon: options.icon || 'fa fa-refresh fa-spin', // takes font awesome icon
     text: options.text || 'Behold the Beloading ahead ...', /// text to be displayed while waiting
     text_color: options.text_color || 'rgb(255, 255, 255)', // text and icon color
     text_font: options.text_font || 'Georgia, Times, serif', // text font
     text_shadow: options.text_shadow || '0 0 30px rgba(255,255,255,0.5)', // text and icon shadow
     text_size: options.text_size || '300%', // text and icon size
     effect_duration: options.effect_duration * 1000 || 3000, // fade effect duration in seconds
-    trail: options.trail || 'false' // to add escape button, and cancel on load event
+    trail: options.trail || 'false', // to add escape button, and cancel on load event
+    callback: options.callback || function () {
+      console.log('Beloading is done !E')
+    } // function to call when beloading is done 
   }
 
   this.defaults = {
@@ -140,6 +132,7 @@ const beloading = function beload (options,callback=() => {}) {
     $('.beloadert').stop().fadeOut()
     setTimeout(function () {
       $('.beloader').remove()
+      options.callback()
     }, Math.round(options.effect_duration / 2) + 500)
   }
 
