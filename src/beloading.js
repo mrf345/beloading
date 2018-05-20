@@ -31,6 +31,7 @@ var beloading = function beload (options,callback=function () {}) {
     text_size: options.text_size || '300%', // text and icon size
     effect_duration: options.effect_duration * 1000 || 3000, // fade effect duration in seconds
     trail: options.trail || 'false', // to add escape button, and cancel on load event
+    fadeIn: options.fadeIn || 'false' // to add fade in effect to the overlay
   }
 
   beloadingReturn.defaults = {
@@ -68,7 +69,7 @@ var beloading = function beload (options,callback=function () {}) {
     var gets = Math.round((options.effect_duration / 2) / 1000)
     var div = $('<div>').css({
       'background-color': options.background,
-      'opacity': '1',
+      'opacity': options.fadeIn === 'true' ? '0' : '1',
       'width': '100%',
       'height': '100%',
       'z-index': '10',
@@ -107,6 +108,7 @@ var beloading = function beload (options,callback=function () {}) {
         $('<button>').addClass('btn btn-danger').text('Escape').attr('onclick', 'stop()')))
     }
     $('body').prepend(div.append(div2))
+    if (options.fadeIn === 'true') $(div).css('opacity', '1')
   }
 
   beloadingReturn.effectit = function effectit () {
