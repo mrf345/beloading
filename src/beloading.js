@@ -80,11 +80,11 @@ var beloading = function beload (options,callback=function () {}) {
       'min-height': '100vh',
       'display': 'flex',
       'align-items': 'center',
-      '-webkit-transition': 'opacity ' + gets + 's ease-in',
-      '-moz-transition': 'opacity ' + gets + 's ease-in',
-      '-o-transition': 'opacity ' + gets + 's ease-in',
-      '-ms-transition': 'opacity ' + gets + 's ease-in',
-      'transition': 'opacity ' + gets + 's ease-in'
+      '-webkit-transition': 'opacity ' + gets + 's ease-in-out',
+      '-moz-transition': 'opacity ' + gets + 's ease-in-out',
+      '-o-transition': 'opacity ' + gets + 's ease-in-out',
+      '-ms-transition': 'opacity ' + gets + 's ease-in-out',
+      'transition': 'opacity ' + gets + 's ease-in-out'
     }).addClass('beloader')
     var div2 = $('<div>').css({
       'width': '70%',
